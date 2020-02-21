@@ -13,9 +13,6 @@ int l= s.size();
 
         for(int j =0; j<l; j=j+i)
         {
-
-
-
         while(next_permutation(s.begin(),s.end()))
         Count++;
 
