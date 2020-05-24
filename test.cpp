@@ -1,44 +1,86 @@
-#include <iostream>
 #include<bits/stdc++.h>
 using namespace std;
+///############################ MD. SHAHRIAR MAHMUD ############################
+///################################ CSE,RUET'14 ################################
+/*
 
-int main() {
+*/
 
-	long long int c;
-	cin>>c;
-	while(c-->0)
-	{cout<<"C "<<c<<endl;
-	    bool flag =false;
-	    long long int pos1 = 0;
-	   long long int pos2 = 0;
-	 long long int n,s;
-	 long long int arr[1000];
-	 cin>>n>>s;
-	 //cout<<s<<endl;
-	 for(long long int i =0 ; i< n; i++)	     cin>>arr[i];
-	 for(long long int i =0; i<n; i++){
-	     long long int temp =0;
-	     for(long long int j =i; j<n;j++)
-	     {
-	       temp =temp+ arr[j];
-	       //cout<<"sumation" <<temp<<endl;
 
-	         if(s == temp)
-	         {
-	              pos1 = i;
-	             pos2 = j;
+bool isPalindromeNaive(int n)
+{   int a=n;
+    int temp = 0;
+    while(n != 0 )
+    {
+        temp = temp*10;
+        temp = temp + n%10;
 
-	             flag =true;
-	             break;
-	         }
-	     }
-	     if(flag == true) break;
-	 }
-	 if(flag==true)
-	 cout<<pos1+1<<" "<<pos2+1<<endl;
-	 else
-	 cout<<"-1"<<endl;
+        n = n/10;
+    }
+    if(temp == a)
+        return true;
+    return false;
 
-	}
-	return 0;
 }
+// A utility for creating palindrome
+int c =0;
+int createPalindrome(int input, int b, bool isOdd)
+{
+    int n = input;
+    int palin = input;
+
+    c++;
+    // checks if number of digits is odd or even
+    // if odd then neglect the last digit of input in
+    // finding reverse as in case of odd number of
+    // digits middle element occur once
+    if (isOdd)
+        n /= b;
+
+    // Creates palindrome by just appending reverse
+    // of number to itself
+    while (n > 0)
+    {
+        palin = palin * b + (n % b);
+        n /= b;
+    }
+    return palin;
+}
+
+// Function to print decimal palindromic number
+void generatePalindromes(int n)
+{
+    int number;
+
+    // Run two times for odd and even length palindromes
+    for (int j = 0; j < 2; j++)
+    {
+        // Creates palindrome numbers with first half as i.
+        // Value of j decided whether we need an odd length
+        // of even length palindrome.
+        int i = 1;
+        while ((number = createPalindrome(i, 10, j % 2)) < n)
+        {// cout<<"i "<<i<<endl;
+            cout << number << " ";
+            i++;
+        }
+    }
+}
+
+int main()
+{
+    int n;
+        while(scanf("%d",&n))
+        {
+           // cout<<isPalindromeNaive(n)<<endl;
+
+            generatePalindromes(n);
+            cout<<endl<<c;
+            c =0;
+
+        }
+return 0;
+}
+
+
+

@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-   vector< vector<int> >mat{
+   int mat[3][3] = {
         {1,2,3},
         {4,5,6},
         {7,8,9}};
@@ -15,8 +15,9 @@ int main()
     vector<int> result;
     // if(size_of(mat))    {cout<<"Empty matrix"<<endl;    return 0;}
 
-    int cl =mat[0].size();
-    int rw =mat.size();
+    //int cl =mat[0].size();
+    //int rw =mat.size();
+    int cl =3,rw =3;
 
     int direction =0,left =0,right=cl-1,top =0,bottom =rw -1; /// there is 4 direction like this traversal
 
